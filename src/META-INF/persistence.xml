@@ -8,9 +8,9 @@
 		<class>br.com.projetopoo.model.Faltas</class>
 		
 		<properties>		
-			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5433/poo1" />
-			<property name="hibernate.connection.username" value="wilson" />
-			<property name="hibernate.connection.password" value="181085" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/projetopoo" />
+			<property name="hibernate.connection.username" value="postgres" />
+			<property name="hibernate.connection.password" value="32354110" />
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

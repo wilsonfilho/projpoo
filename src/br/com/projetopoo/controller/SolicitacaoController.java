@@ -67,4 +67,10 @@ public class SolicitacaoController {
 		
 		result.redirectTo(this).solicitarAbono();
 	}
+	
+	@Get("/autorizarsolicitacao")
+	public List<Acoes> autorizarSolicitacao() {
+		
+		return acoesDao.findAll(new Acoes());
+	}
 }

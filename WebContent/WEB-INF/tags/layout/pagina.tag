@@ -2,6 +2,9 @@
 <%@ tag description="Layout da Pagina" %>
 
 <%@ attribute name="titulo" required="true" description="Titulo da Pagina" %>
+<%@ attribute name="cabecalhoExtra" fragment="true" description="Code Extra para colocar antes do Head" %>
+
+<%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,14 +14,22 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		
 		<title>ProjetoPOO | ${titulo}</title>
 		
+		<script type="text/javascript" src="${url}/js/jquery.js"></script>
+		
 		<link rel="stylesheet" href="${url}/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="${url}/css/smoothness/jquery-ui.css.css" type="text/css" />
+		
+		<jsp:invoke fragment="cabecalhoExtra"/>
 	</head>
 	
 	<body>
 	
 		<div class="container">
+			<layout:menu />
+			
 			<jsp:doBody />
 		</div>
 	

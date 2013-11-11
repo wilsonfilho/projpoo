@@ -8,6 +8,18 @@
 
 <layout:pagina titulo="Solicitar Abono">
 
+	<jsp:attribute name="cabecalhoExtra">
+	
+		<script type="text/javascript">
+		
+			$(document).ready(function() {
+				$("#solicitarAbono").addClass('active');
+			});
+		
+		</script>
+	
+	</jsp:attribute>
+
 	<jsp:body>
 	
 		<div class="page-header">
