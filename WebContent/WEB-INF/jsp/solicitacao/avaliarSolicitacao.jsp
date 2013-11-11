@@ -44,7 +44,7 @@
 				
 				if (confirm("Aprovar a solicitação " + id + " ?")) {
 					
-					$.post("${url}/solicitacao/aprovar", { 'id': id }, function(resposta) {
+					$.post("${url}/solicitacao/aprovarSolicitacaoRh", { 'id': id }, function(resposta) {
 						
 						if (resposta == 'sucesso') {
 							

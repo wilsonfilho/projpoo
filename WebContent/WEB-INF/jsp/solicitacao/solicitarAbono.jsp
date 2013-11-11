@@ -15,12 +15,30 @@
 			$(document).ready(function() {
 				$("#solicitarAbono").addClass('active');
 			});
+			
+			$('#formulario').submit(function() {
+				
+				$("#errmsg2").html("Solicitação cadastrada com Sucesso!");
+				$("#errmsg2").show();
+				
+			});
 		
 		</script>
-	
+		
 	</jsp:attribute>
 
 	<jsp:body>
+	
+	<style type="text/css">
+	
+	#errmsg2 {
+	color: red;
+	display: none;
+             }
+	
+	
+	
+    </style>
 	
 		<div class="page-header">
 			<h3>Solicitação de Abono</h3>
@@ -63,6 +81,9 @@
 				<button type="reset" class="btn btn-danger">Cancelar</button>
 				<button type="submit" class="btn btn-success">Enviar</button>
 			</div>
+			
+			 <span id="errmsg2"></span>
+			
 		</form>	
 	
 	</jsp:body>

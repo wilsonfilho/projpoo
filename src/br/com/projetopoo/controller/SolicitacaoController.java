@@ -120,4 +120,18 @@ public class SolicitacaoController {
 		
 		result.redirectTo(this).avaliarSolicitacao();
 	}
+	
+	@Post("/solicitacao/aprovarSolicitacaoRh")
+	public void aprovarSolicitacaoRh(Integer id, String observacao) {
+		
+		Acoes acao = new Acoes(id);
+		acao = acoesDao.findBy("id", acao);
+		acao.setObservacao(observacao);
+		
+		// B -> Back(Retorno)
+		acao.setTipoAcao('P');
+		acoesDao.update(acao);
+		
+		result.use(Results.json()).withoutRoot().from("sucesso").serialize();
+	}
 }
