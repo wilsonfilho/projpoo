@@ -54,10 +54,18 @@ public class GenericDao {
 		return resultado;
 	}
 	
-	public Object save(Object object) {
+	public <E> E save(E objeto) {
+
+		entityManager.persist(objeto);
 		
-		entityManager.persist(object);
+		return objeto;
+	}
+	
+	public <E> E update(E objeto) {
+
+		entityManager.merge(objeto);
+		entityManager.flush();
 		
-		return object;
+		return objeto;
 	}
 }

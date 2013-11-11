@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import br.com.projetopoo.dao.AcoesDao;
 import br.com.projetopoo.dao.EmpregadoDao;
 import br.com.projetopoo.dao.SolicitacaoDao;
@@ -71,6 +72,19 @@ public class SolicitacaoController {
 	@Get("/autorizarsolicitacao")
 	public List<Acoes> autorizarSolicitacao() {
 		
-		return acoesDao.findAll(new Acoes());
+		return acoesDao.todasSolicitacoes();
+	}
+	
+	@Post("/solicitacao/recusar")
+	public void recusarSolicitacao(Integer id) {
+		
+		Acoes acao = new Acoes(id);
+		acao = acoesDao.findBy("id", acao);
+		
+		// R -> Recusado
+		acao.setTipoAcao('R');
+		acoesDao.update(acao);
+		
+		result.use(Results.json()).withoutRoot().from("sucesso").serialize();
 	}
 }

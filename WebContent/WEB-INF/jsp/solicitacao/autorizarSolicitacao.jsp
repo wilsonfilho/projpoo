@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<c:set var="url" value="<%=request.getContextPath()%>" />
+
 <layout:pagina titulo="Autorizar Solicitação">
 
 	<jsp:attribute name="cabecalhoExtra">
@@ -14,6 +16,20 @@
 			$(document).ready(function() {
 				$("#autorizarSolicitacao").addClass('active');
 			});
+			
+			function recusar(id) {
+				
+				if (confirm("Recusar a solicitação " + id + " ?")) {
+					
+					$.post("${url}/solicitacao/recusar", { 'id': id }, function(resposta) {
+						
+						if (resposta == 'sucesso') {
+							
+							window.location.reload(true);
+						}
+					});
+				}
+			}
 		
 		</script>
 	
@@ -47,7 +63,7 @@
 						<td>${acao.descricao}</td>
 						<td>
 							<div class="btn-group">
-								<button type="button" class="btn btn-danger">Recusar</button>
+								<button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
 								<button type="button" class="btn btn-success">Aprovar</button>
 							</div>
 						</td>

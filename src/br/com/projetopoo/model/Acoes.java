@@ -33,6 +33,12 @@ public class Acoes {
 	
 	private Character tipoAcao;
 
+	public Acoes() { }
+	
+	public Acoes(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
