@@ -18,6 +18,7 @@
 		<title>ProjetoPOO | ${titulo}</title>
 		
 		<script type="text/javascript" src="${url}/js/jquery.js"></script>
+		<script type="text/javascript" src="${url}/js/jquery-ui.js"></script>
 		
 		<link rel="stylesheet" href="${url}/css/bootstrap.css" type="text/css" />
 		<link rel="stylesheet" href="${url}/css/smoothness/jquery-ui.css" type="text/css" />

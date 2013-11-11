@@ -27,6 +27,8 @@ public class Acoes {
 
 	private String descricao;
 	
+	private String observacao;
+
 	@ManyToOne
 	@JoinColumn(name="id_gestor")
 	private Empregado gestor;
@@ -77,6 +79,14 @@ public class Acoes {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public Empregado getGestor() {

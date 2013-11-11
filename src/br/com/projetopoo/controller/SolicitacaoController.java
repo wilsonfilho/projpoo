@@ -106,4 +106,18 @@ public class SolicitacaoController {
 		
 		result.use(Results.json()).withoutRoot().from("sucesso").serialize();
 	}
+	
+	@Post("/solicitacao/retornar")
+	public void retornarSolicitacao(Integer id, String observacao) {
+		
+		Acoes acao = new Acoes(id);
+		acao = acoesDao.findBy("id", acao);
+		acao.setObservacao(observacao);
+		
+		// B -> Back(Retorno)
+		acao.setTipoAcao('B');
+		acoesDao.update(acao);
+		
+		result.redirectTo(this).avaliarSolicitacao();
+	}
 }

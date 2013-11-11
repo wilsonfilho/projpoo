@@ -6,6 +6,8 @@
 <c:set var="url" value="<%=request.getContextPath()%>" />
 
 <nav class="navbar navbar-inverse">
+	<a class="navbar-brand" href="${url}">Projeto POO</a>
+
 	<ul class="nav navbar-nav">
 	    <li id="solicitarAbono"><a href="${url}">Solicitar Abono</a></li>
 	    <li id="autorizarSolicitacao"><a href="${url}/autorizarsolicitacao">Autorizar Solicitação</a></li>

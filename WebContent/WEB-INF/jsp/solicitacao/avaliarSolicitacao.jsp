@@ -15,6 +15,15 @@
 		
 			$(document).ready(function() {
 				$("#avaliarSolicitacao").addClass('active');
+				
+				$("#dialogObservacao").dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					minHeight: 300,
+					minWidth: 500,
+					draggable: false
+				});
 			});
 			
 			function recusar(id) {
@@ -31,7 +40,7 @@
 				}
 			}
 			
-         function aprovar(id) {
+        	function aprovar(id) {
 				
 				if (confirm("Aprovar a solicitação " + id + " ?")) {
 					
@@ -44,6 +53,13 @@
 					});
 				}
 			}
+        	
+        	function retornar(id) {
+        		
+        		$("#acaoId").val(id);
+        		
+        		$("#dialogObservacao").dialog('open');
+        	}
 		
 		</script>
 	
@@ -78,7 +94,7 @@
 						<td>
 							<div class="btn-group">
 								<button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
-								<button type="button" onclick="aprovar(${acao.id});" class="btn btn-warning">Retornar</button>
+								<button type="button" onclick="retornar(${acao.id});" class="btn btn-warning">Retornar</button>
 								<button type="button" onclick="aprovar(${acao.id});" class="btn btn-success">Aprovar</button>
 							</div>
 						</td>
@@ -86,6 +102,24 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div id="dialogObservacao" title="Observação">
+			<form action="${url}/solicitacao/retornar" method="post">
+				<input type="hidden" id="acaoId" name="id" />
+			
+				<div class="input-group">
+					<span class="input-group-addon">Observação:</span>
+					<textarea style="height: 200px; resize: none" class="form-control" name="observacao"></textarea>
+				</div>
+				
+				<br />
+				
+				<div class="btn-group pull-right">
+					<button type="reset" class="btn btn-danger" onclick="$('#dialogObservacao').dialog('close');">Cancelar</button>
+					<button type="submit" class="btn btn-warning">Confirmar Retorno</button>
+				</div>
+			</form>
+		</div>
 	
 	</jsp:body>
 

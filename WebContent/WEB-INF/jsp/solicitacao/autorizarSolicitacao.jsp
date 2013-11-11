@@ -15,6 +15,15 @@
 		
 			$(document).ready(function() {
 				$("#autorizarSolicitacao").addClass('active');
+				
+				$('#dialogObservacao').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					minHeight: 200,
+					minWidth: 500,
+					draggable: false
+				});
 			});
 			
 			function recusar(id) {
@@ -31,7 +40,7 @@
 				}
 			}
 			
-         function aprovar(id) {
+         	function aprovar(id) {
 				
 				if (confirm("Aprovar a solicitação " + id + " ?")) {
 					
@@ -63,7 +72,7 @@
 					<th>Data Início</th>
 					<th>Data Fim</th>
 					<th>Motivo</th>
-					<th>Opções</th>
+					<th style="text-align: center;">Opções</th>
 				</tr>
 			</thead>
 			
@@ -75,16 +84,36 @@
 						<td><fmt:formatDate value="${acao.dataInicio}" pattern="dd-MM-yyyy HH:mm:ss" /></td>
 						<td><fmt:formatDate value="${acao.dataFim}" pattern="dd-MM-yyyy HH:mm:ss" /></td>
 						<td>${acao.descricao}</td>
-						<td>
-							<div class="btn-group">
-								<button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
-								<button type="button" onclick="aprovar(${acao.id});" class="btn btn-success">Aprovar</button>
-							</div>
+						<td align="center">
+							<c:choose>
+								<c:when test="${acao.observacao != null}">
+									<div class="btn-group">
+										<a href="javascript:;" onclick="$('#acaoObservacao').val('${acao.observacao}');$('#dialogObservacao').dialog('open');"><img title="Ver Observação" src="${url}/img/icones/detalhe.png" /></a>
+									</div>
+								</c:when>
+								
+								<c:otherwise>
+									<div class="btn-group">
+										<button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
+										<button type="button" onclick="aprovar(${acao.id});" class="btn btn-success">Aprovar</button>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div id="dialogObservacao" title="Observação RH">
+			<textarea style="height: 200px; resize: none; background-color: #FFF;" disabled="disabled" class="form-control" id="acaoObservacao"></textarea>
+			
+			<br />
+			
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-danger" onclick="$('#dialogObservacao').dialog('close');">Fechar</button>
+			</div>
+		</div>
 	
 	</jsp:body>
 

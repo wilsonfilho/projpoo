@@ -20,7 +20,7 @@ public class AcoesDao extends GenericDao {
 	public List<Acoes> todasSolicitacoes() {
 		
 		// S -> Solicitação
-		Query query = entityManager.createQuery("select a from Acoes a where a.tipoAcao = 'S'");
+		Query query = entityManager.createQuery("select a from Acoes a where a.tipoAcao = 'S' or a.tipoAcao = 'B'");
 		
 		return query.getResultList();
 	}
