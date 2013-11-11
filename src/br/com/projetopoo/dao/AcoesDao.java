@@ -24,4 +24,13 @@ public class AcoesDao extends GenericDao {
 		
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Acoes> todasSolicitacoesAvaliar() {
+		
+		// S -> Solicitação
+		Query query = entityManager.createQuery("select a from Acoes a where a.tipoAcao = 'A'");
+		
+		return query.getResultList();
+	}
 }

@@ -75,6 +75,12 @@ public class SolicitacaoController {
 		return acoesDao.todasSolicitacoes();
 	}
 	
+	@Get("/avaliarsolicitacao")
+	public List<Acoes> avaliarSolicitacao() {
+		
+		return acoesDao.todasSolicitacoesAvaliar();
+	}
+	
 	@Post("/solicitacao/recusar")
 	public void recusarSolicitacao(Integer id) {
 		
@@ -83,6 +89,19 @@ public class SolicitacaoController {
 		
 		// R -> Recusado
 		acao.setTipoAcao('R');
+		acoesDao.update(acao);
+		
+		result.use(Results.json()).withoutRoot().from("sucesso").serialize();
+	}
+	
+	@Post("/solicitacao/aprovar")
+	public void aprovarSolicitacao(Integer id) {
+		
+		Acoes acao = new Acoes(id);
+		acao = acoesDao.findBy("id", acao);
+		
+		// A -> Avaliar
+		acao.setTipoAcao('A');
 		acoesDao.update(acao);
 		
 		result.use(Results.json()).withoutRoot().from("sucesso").serialize();

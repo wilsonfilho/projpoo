@@ -7,14 +7,14 @@
 
 <c:set var="url" value="<%=request.getContextPath()%>" />
 
-<layout:pagina titulo="Autorizar Solicitação">
+<layout:pagina titulo="Avaliar Solicitação">
 
 	<jsp:attribute name="cabecalhoExtra">
 	
 		<script type="text/javascript">
 		
 			$(document).ready(function() {
-				$("#autorizarSolicitacao").addClass('active');
+				$("#avaliarSolicitacao").addClass('active');
 			});
 			
 			function recusar(id) {
@@ -78,6 +78,7 @@
 						<td>
 							<div class="btn-group">
 								<button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
+								<button type="button" onclick="aprovar(${acao.id});" class="btn btn-warning">Retornar</button>
 								<button type="button" onclick="aprovar(${acao.id});" class="btn btn-success">Aprovar</button>
 							</div>
 						</td>
