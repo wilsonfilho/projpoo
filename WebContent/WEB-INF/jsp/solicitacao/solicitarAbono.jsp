@@ -10,6 +10,10 @@
 
 	<jsp:attribute name="cabecalhoExtra">
 	
+	 <script type="text/javascript" src="${contexto}/js/jquery-ui.js"></script>
+	 <script type="text/javascript" src="${contexto}/js/jquery.js"></script>
+	  <script type="text/javascript" src="${contexto}/js/jquery.js"></script>
+	
 		<script type="text/javascript">
 		
 			$(document).ready(function() {
@@ -21,6 +25,9 @@
 				$("#errmsg2").html("Solicitação cadastrada com Sucesso!");
 				$("#errmsg2").show();
 				
+				
+				$("inicio").mask("99-99-9999");
+				$("fim").mask("99-99-9999");
 			});
 		
 		</script>
@@ -35,8 +42,6 @@
 	color: red;
 	display: none;
              }
-	
-	
 	
     </style>
 	
@@ -58,14 +63,14 @@
 			
 			<div class="input-group">
 				<span class="input-group-addon">Data Início:</span>
-				<input type="text" class="form-control" name="dataInicio">
+				<input id="inicio" type="text" class="form-control" name="dataInicio">
 			</div>
 			
 			<br />
 			
 			<div class="input-group">
 				<span class="input-group-addon">Data Fim:</span>
-				<input type="text" class="form-control" name="dataFim">
+				<input id="fim" type="text" class="form-control" name="dataFim">
 			</div>
 			
 			<br />

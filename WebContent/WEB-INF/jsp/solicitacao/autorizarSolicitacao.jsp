@@ -87,6 +87,8 @@
 						<td align="center">
 							<c:choose>
 								<c:when test="${acao.observacao != null}">
+								    <button type="button" onclick="recusar(${acao.id});" class="btn btn-danger">Recusar</button>
+									<button type="button" onclick="aprovar(${acao.id});" class="btn btn-success">Aprovar</button>
 									<div class="btn-group">
 										<a href="javascript:;" onclick="$('#acaoObservacao').val('${acao.observacao}');$('#dialogObservacao').dialog('open');"><img title="Ver Observação" src="${url}/img/icones/detalhe.png" /></a>
 									</div>
